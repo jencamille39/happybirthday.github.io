@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebration Balloons 🎈</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #cbe6ff 0%, #eef7ff 50%, #ffe6f0 100%);
+            --glass-bg: rgba(255, 255, 255, 0.78);
+            --glass-border: rgba(255, 255, 255, 0.95);
+            --primary-color: #d63384;
+            --text-color: #2c3e50;
+            --text-muted: #596a7a;
+            --shadow: 0 15px 35px rgba(0, 110, 190, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.balloons-page {
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            background: #ffffff;
+            color: var(--primary-color);
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            z-index: 10;
+            border: 1px solid #ffb6c1;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            background: var(--primary-color);
+            color: #ffffff;
+        }
+
+        #floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .glass-card {
+            position: relative;
+            z-index: 2;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            max-width: 780px;
+            width: 100%;
+            padding: 50px 45px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            margin-bottom: 35px;
+            letter-spacing: -0.5px;
+        }
+
+        .letter-body p {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+        }
+
+        .letter-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .quote-box {
+            margin-top: 35px;
+            padding: 22px 25px;
+            background: rgba(255, 182, 193, 0.15);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            font-style: italic;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-color);
+        }
+
+        .floating-item {
+            position: absolute;
+            top: -50px;
+            user-select: none;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body class="balloons-page">
+
+    <canvas id="fireworksCanvas"></canvas>
+    <div id="floating-bg"></div>
+
+    <a href="index.html" class="back-btn">← Back Home</a>
+
+    <div class="glass-card">
+        <h1>Floating Wishes & Balloons 🎈✨</h1>
+        
+        <div class="letter-body">
+            <p>I just wanted to remind you that no matter how far apart we are, you're never alone. I know life can get overwhelming sometimes, and there are days when everything feels heavier than it should. On those days, I hope you remember how strong you are and how much you mean to the people who care about you, including me.</p>
+            
+            <p>I know being far away makes it hard because I can't always be there in person to give you a hug, sit with you, or make things easier. But if I could, I would. Since I can't, please know that my thoughts, support, and care are always with you. Distance may keep us apart physically, but it will never change how much our friendship means to me.</p>
+            
+            <p>You don't always have to be okay. You don't have to pretend to be strong all the time or carry everything by yourself. It's okay to rest. It's okay to feel tired. It's okay to let your emotions out. You're human, and you're allowed to have difficult moments. Just remember that difficult moments do not define you, and they won't last forever.</p>
+            
+            <p>I wish you could see yourself the way I see you. You're kind, resilient, thoughtful, and capable of getting through challenges, even when you doubt yourself. You've already survived every hard day that has come your way, and that says so much about your strength.</p>
+            
+            <p>Whenever you feel lonely, sad, or lost, think of this message as a reminder that someone out here is cheering for you, believing in you, and hoping for your happiness. I'm proud of you for continuing to move forward, even when things aren't easy. Take things one step at a time, and don't put too much pressure on yourself. You're doing better than you think.</p>
+            
+            <p>Thank you for being such an important part of my life. Even with the miles between us, I'm grateful for our friendship every single day. No matter what happens, I'll always be here to listen, support you, and remind you that you're valued, appreciated, and loved. Please take care of yourself, and never forget that brighter days are waiting for you. You've got this, and you've got me.</p>
+        </div>
+
+        <div class="letter-footer">
+            With lots of love, hugs, and best wishes, 🎈💖
+        </div>
+
+        <div class="quote-box">
+            "No matter how far apart we are, my thoughts and support are always floating right beside you." 🎈✨🌷
+        </div>
+    </div>
+
+    <script>
+        // Raining Flowers Background Engine
+        const symbols = ['🌷', '🪷', '🌷', '🪷', '✨', '🎈'];
+        const bgContainer = document.getElementById('floating-bg');
+
+        function createFallingElement() {
+            const el = document.createElement('div');
+            el.classList.add('floating-item');
+            el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = Math.random() * 1.4 + 1.1 + 'rem';
+            
+            const duration = Math.random() * 4 + 4;
+            el.style.animationDuration = duration + 's';
+            
+            bgContainer.appendChild(el);
+            setTimeout(() => el.remove(), duration * 1000);
+        }
+        setInterval(createFallingElement, 300);
+
+        // Fireworks Engine
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Firework {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height;
+                this.targetY = Math.random() * (canvas.height * 0.5);
+                this.speed = 6;
+                this.particles = [];
+                this.exploded = false;
+                this.color = `hsl(${Math.random() * 360}, 90%, 65%)`;
+            }
+
+            update() {
+                if (!this.exploded) {
+                    this.y -= this.speed;
+                    if (this.y <= this.targetY) {
+                        this.exploded = true;
+                        this.createParticles();
+                    }
+                } else {
+                    this.particles.forEach(p => p.update());
+                    this.particles = this.particles.filter(p => p.alpha > 0);
+                }
+            }
+
+            createParticles() {
+                for (let i = 0; i < 60; i++) {
+                    this.particles.push(new Particle(this.x, this.y, this.color));
+                }
+            }
+
+            draw() {
+                if (!this.exploded) {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x, this.y, 3, 12);
+                } else {
+                    this.particles.forEach(p => p.draw());
+                }
+            }
+        }
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 7 + 2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.012 + 0.008;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.06;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        let fireworks = [];
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 20, 40, 0.12)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (Math.random() < 0.035) {
+                fireworks.push(new Firework());
+            }
+
+            fireworks.forEach((fw, index) => {
+                fw.update();
+                fw.draw();
+                if (fw.exploded && fw.particles.length === 0) {
+                    fireworks.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
